@@ -1,20 +1,14 @@
-//
-//  gameserversApp.swift
-//  gameservers
-//
-//  Created by Mohammed Al-Dahleh on 2023-06-16.
-//
-
 import SwiftUI
 
 @main
 struct gameserversApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject var dataController = DataController()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environmentObject(dataController)
         }
     }
 }
